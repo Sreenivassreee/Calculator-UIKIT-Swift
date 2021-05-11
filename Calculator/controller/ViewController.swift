@@ -15,6 +15,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
   
+    var disValue:Double{
+        get{
+            guard let number = Double(AnswerLable.text!) else {
+                fatalError("Not Able to ")
+            }
+            return number
+        }
+    }
     
     @IBOutlet weak var AnswerLable: UITextView!
     
@@ -36,10 +44,16 @@ class ViewController: UIViewController {
         
     }
     @IBAction func symbolPressed(_ sender: UIButton) {
-        var num=Double(AnswerLable.text!)!
+        var num=disValue
+        isFirstLetter=true
         var c = CalcBrain()
+        
         if let symbol=sender.currentTitle{
-            AnswerLable.text = String(c.Calc(number:num,symbol:symbol)!)
+            if let answer = c.Calc(number:num,symbol:symbol){
+                print("answer \(answer)")
+                AnswerLable.text = String(answer)
+            }
+            
         }
         
         
