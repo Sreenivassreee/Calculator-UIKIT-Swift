@@ -10,49 +10,23 @@ import Foundation
 struct CalcBrain {
     var interCalc  : (n: Double, s: String)?
     mutating func Calc(number:Double,symbol:String) -> Double?{
-        
-        
-        
-
         if symbol != nil{
             if number != nil{
-//                switch symbol {
-//
-//                case "AC":
-//                    return 0.0
-//                case "+/-":
-//                    return Double(number * -1.0)
-//                case "%":
-//                   return Double(number / 100)
-////                case "=":
-////                    print("=")
-////                    print(performTwoCalc(n2:number))
-////
-//                default:
-//                    print("Default")
-//
-//                }
-                
-                if symbol == "="{
-                    print("=")
-                    print(performTwoCalc(n2:number))
-                    return performTwoCalc(n2:number)
-                }else if symbol == "AC"{
+                switch symbol {
+                case "AC":
                     return 0.0
-//                    interCalc = (n:number,s:symbol)
-                }else if symbol == "+/-"{
+                case "+/-":
                     return Double(number * -1.0)
-//                    interCalc = (n:number,s:symbol)
-                }else if symbol == "%"{
-                    return Double(number / 100)
-//                    interCalc = (n:number,s:symbol)
-                }else{
-                 interCalc = (n:number,s:symbol)
-                    print("interCalc?.n")
-                    print(interCalc?.n)
-                    print("interCalc!.s")
-                    print(interCalc!.s)
+                case "%":
+                   return Double(number / 100)
+                case "=":
+                    print("=")
+                    return performTwoCalc(n2:number)
+                default:
+                    print("Default")
+                    interCalc = (n:number,s:symbol)
                 }
+                
             }else{
                 return nil
             }
@@ -61,20 +35,14 @@ struct CalcBrain {
         }
         return nil
     }
-    func performTwoCalc(n2:Double) -> Double {
-        var ans:Double=2.0
-        if let n1 = interCalc?.n , let operation = interCalc?.s{
-                print("n1\(operation)")
-                print("operation")
-                print(operation)
+    func performTwoCalc(n2:Double) -> Double? {
+        var ans:Double=0.0
+        if let n1 = interCalc?.n {
+            if let operation = interCalc?.s{
                 switch operation{
                 case "x":
-                    print("X")
                     ans = n1*n2
-                    print(n1*n2)
-                    return n1*n2
                 case "-":
-                    print("-   -")
                     ans=n1-n2
                     
                 case "+":
@@ -84,12 +52,11 @@ struct CalcBrain {
                     ans=n1/n2
                 default:
                     print("Something error")
-                    
                 }
                 return ans
             }
-        return 2.0
+                
         }
-        
-    
+return ans
+    }
 }

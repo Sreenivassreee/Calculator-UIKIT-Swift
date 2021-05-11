@@ -33,7 +33,6 @@ class ViewController: UIViewController {
             AnswerLable.text = sender.currentTitle
             isFirstLetter=false
         }else{
-            
             if sender.currentTitle=="." && isFirstDot {
                 isFirstDot=false
                 AnswerLable.text = AnswerLable.text + sender.currentTitle!
@@ -47,7 +46,7 @@ class ViewController: UIViewController {
     @IBAction func symbolPressed(_ sender: UIButton) {
         var num=disValue
         isFirstLetter=true
-        
+        isFirstDot=true
         
         if let symbol=sender.currentTitle{
             if let answer = c.Calc(number:num,symbol:symbol){
