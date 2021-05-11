@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     var isFirstLetter=true
     var isFirstDot=true
+    var c = CalcBrain()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -46,7 +47,7 @@ class ViewController: UIViewController {
     @IBAction func symbolPressed(_ sender: UIButton) {
         var num=disValue
         isFirstLetter=true
-        var c = CalcBrain()
+        
         
         if let symbol=sender.currentTitle{
             if let answer = c.Calc(number:num,symbol:symbol){
